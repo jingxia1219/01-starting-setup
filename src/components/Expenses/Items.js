@@ -31,5 +31,5 @@ function Items(props) {
       </Card>
     </div>
     )
-}
+}  
 export default Items;
