@@ -30,14 +30,15 @@ const ExpenseChart = props => {
         return (
                 <div className='chart-bar' key={monthData.label}>
                     <div className='chart-bar__inner'>
-                    <div className='chart-bar__fill' style={{height:percentage}}></div>
-                    </div> <div className='chart-bar__label'>{monthData.label}</div>
-                 
+                        <div className='chart-bar__fill' style={{height:percentage}}>
+                        </div>
+                    </div> 
+                    <div className='chart-bar__label'>{monthData.label}</div>
                  </div> 
         )
     })
     return(
-        <div>
+        <div className='chart'>
             {chartDisplay}
         </div>
     )
