@@ -14,9 +14,9 @@ function ExpensesList(props) {
       date={expense.date} />)
     }
     return(
-        <li className='expenses-list'>
+        <ul className='expenses-list'>
         {expenseContent}
-        </li>
+        </ul>
     )
 }
 

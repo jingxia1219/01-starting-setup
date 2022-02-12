@@ -52,3 +52,8 @@
     padding: 0.5rem 1.5rem;
   }
 }
+
+.create_expense__button {
+  display:block;
+  align-items: center;
+}

@@ -26,10 +26,30 @@ function ExpenseForm(props) {
         setTitle("") //trying to clear the box after data has been saved to our object
         setAmount("")//..by creating value inside the input tag and point to enteredAmount, by using setState hook, will rerender the component and therefore will clear the input box
         setDate("")//..
-        props.onSaveExpenseData(expenseData);//as a part of the form submission handler, we pass the expenseData object to the props.saveNewExpense handler, so data will be passed to the parent where the function lives in
+        props.onSaveExpenseData(expenseData);
+        setExpenseFormState(false)//as a part of the form submission handler, we pass the expenseData object to the props.saveNewExpense handler, so data will be passed to the parent where the function lives in
+    }
+
+    // implement a conditional statement to show a box that has an option saying add expense as default 
+    // 
+
+    const [expenseForm,setExpenseFormState] = useState(false) 
+  
+    const expenseFormHandler = () => {
+        setExpenseFormState(true)
     }
 
     
+    if (expenseForm === false) {
+        return(
+            <div className='create_expense__button'>
+                <button onClick={expenseFormHandler}>Create Expense</button>
+            </div>
+        )
+    }
+    const cancelHandler = () => {
+        setExpenseFormState(false)
+    }
 
     return (
     <form onSubmit={submitHandler}>
@@ -48,6 +68,7 @@ function ExpenseForm(props) {
             </div>
         </div>
             <div className="new-expense__actions">
+                <button onClick={cancelHandler}>Cancel</button>
                 <button type='submit'>Add Expense</button>
             </div>
     </form>
