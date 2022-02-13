@@ -18,15 +18,23 @@ const ExpenseChart = props => {
     ];
     let maxValue = 0;
     props.expenses.forEach (expense => {
+        // console.log('1',expense);
         const month = expense.date.getMonth(); //getMonth return 0 for Jan
-        chartDataPoints[month].value = expense.amount; //chartDataPoints[month] gets the object in the array for the correct month, since index is the same as getMonth, 1 less than the actual month
+        chartDataPoints[month].value += expense.amount; //chartDataPoints[month] gets the object in the array for the correct month, since index is the same as getMonth, 1 less than the actual month
         chartDataPoints.key = month; //key
-        maxValue = expense.amount + maxValue; //maxValue
+        if (chartDataPoints[month].value > maxValue) {
+            maxValue = chartDataPoints[month].value
+        } //maxValue
     })
+    // console.log(chartDataPoints);
     chartDataPoints.maxValue = maxValue;
+    let percentage;
     const chartDisplay = chartDataPoints.map( monthData => {
-        let percentage = Math.round((monthData.value/maxValue)*100) + '%'
-        console.log(percentage);
+        if (maxValue === 0) {
+            percentage = 0
+        } else
+        {percentage = Math.round((monthData.value/maxValue)*100) + '%'}
+        
         return (
                 <div className='chart-bar' key={monthData.label}>
                     <div className='chart-bar__inner'>
